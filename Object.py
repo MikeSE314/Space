@@ -10,7 +10,7 @@ class Obj(object):
         self.keys = keys
         self.kp = self.keys.get_keys()
         self.drawer = drawer
-        self.Ps = Vector(positions[0], positions[1], positions[2])
+        self.Ps = Vector(positions.x, positions.y, positions.z)
         self.q = rotQuat
         self.qo = oRotQuat
         self.id = id

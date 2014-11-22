@@ -72,13 +72,19 @@ keys = Keys.Keys()
 
 objects = ObjectList.ObjectList()
 
-objects.add_object(Player.Player(keys, draw, [0., 5., 0.],
-                                       "SpaceShip.obj",
+objects.add_object(Player.Player(keys, draw, Quaternion.Vector(0, 5, 0),
+                                       "creepySphereThingy.obj",
                                        Quaternion.Quaternion(.01, 0, 0, -1),
                                        Quaternion.Quaternion(.01, 0, 1, 0),
                                        "ship"))
-objects.add_object(Plane.Plane(draw, Quaternion.Vector(0, 0, 0), "triangle.obj", "floor"))
-objects.add_object(Plane.Plane(draw, Quaternion.Vector(0, 0, 0), "triangle_2.obj", "floor"))
+objects.add_object(Plane.Plane(keys, draw, Quaternion.Vector(0, 0, 0), "triangle.obj",
+                               Quaternion.Quaternion(.01, 0, 0, -1),
+                               Quaternion.Quaternion(.01, 0, 1, 0),
+                               "floor"))
+objects.add_object(Plane.Plane(keys, draw, Quaternion.Vector(0, 0, 0), "triangle_2.obj",
+                               Quaternion.Quaternion(.01, 0, 0, -1),
+                               Quaternion.Quaternion(.01, 0, 1, 0),
+                               "floor"))
 
 camera = Camera.Camera(screenWidth, screenHeight, viewDivisor, objects, msPF)
 
