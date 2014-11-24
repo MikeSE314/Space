@@ -7,8 +7,7 @@ class Draw:
     def normal(self, p1, p2, p3):
         U = (p2[0] - p1[0], p2[1] - p1[1], p2[2] - p1[2])
         V = (p3[0] - p1[0], p3[1] - p1[1], p3[2] - p1[2])
-        return (U[1] * V[2] - U[2] * V[1], U[2] * V[0] - U[0] * V[2],
-                U[0] * V[1] - U[1] * V[0])
+        return (U[1] * V[2] - U[2] * V[1], U[2] * V[0] - U[0] * V[2], U[0] * V[1] - U[1] * V[0])
     def draw_rect(self, x, y, z, width, height):
         glBegin(GL_POINTS)
         glVertex3f(x, y, z)
@@ -78,9 +77,6 @@ class Draw:
         p4 = (Ps.x + Ds.x / 2, Ps.y - Ds.y / 2, Ps.z + Ds.z / 2)#r b f
         p5 = (Ps.x + Ds.x / 2, Ps.y - Ds.y / 2, Ps.z - Ds.z / 2)#r b b
         '''
-                 
-                 
-                 
                                              2
                                            ....
                                           ......
@@ -109,11 +105,6 @@ class Draw:
                    ....                                ..
                    ..................                 ..
                    3...................................4
-                 
-                 
-                 
-                 
-                 
         '''
         self.draw_triangle(p3, p1, p5)
         self.draw_triangle(p5, p4, p3)

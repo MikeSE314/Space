@@ -33,8 +33,7 @@ class Quaternion:
         tempVec2 = tempVec1.Cross(v2)
         return(v2.add(tempVec2.mult(self.w * 2)).add(tempVec1.Cross(tempVec2).mult(2)))
     def divElem(self, s):#q
-        return(Quaternion(self.w / s,
-                          self.x / s, self.y / s, self.z / s, False))
+        return(Quaternion(self.w / s, self.x / s, self.y / s, self.z / s, False))
     def Slerp(self, q2, s):
         pass
     def p(self):
@@ -50,9 +49,7 @@ class Vector:
     def Normalised(self):#v
         return(self.div(self.Get_length()))
     def Cross(self, v2):#v
-        return(Vector(self.y * v2.z - self.z * v2.y,
-            self.z * v2.x - self.x * v2.z,
-            self.x * v2.y - self.y * v2.x))
+        return(Vector(self.y * v2.z - self.z * v2.y, self.z * v2.x - self.x * v2.z, self.x * v2.y - self.y * v2.x))
     def Rotated_vector_around_angle(self, nHat, theta):
         nHat = nHat.Normalised()
         return(self.mult(math.cos(theta)).add(nHat.mult(self.Dot(nHat)).mult(1 - math.cos(theta))).add(nHat.Cross(self).mult(math.sin(theta))))

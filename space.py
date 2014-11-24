@@ -8,13 +8,13 @@ import Plane, Quaternion, Player
 
 #school:
 #screenWidth, screenHeight = 1580., 800.
-#macAir:
-#screenWidth, screenHeight = 1366., 710.
-#macPro:
-screenWidth, screenHeight = 1280., 752.
+#macBookAir:
+screenWidth, screenHeight = 1366., 768.
+#macBookPro:
+#screenWidth, screenHeight = 1280., 752.
 SCREEN_SIZE = (int(screenWidth), int(screenHeight))
 pygame.init()
-window = pygame.display.set_mode(SCREEN_SIZE, HWSURFACE|OPENGL|DOUBLEBUF)
+window = pygame.display.set_mode(SCREEN_SIZE, HWSURFACE | OPENGL | DOUBLEBUF)
 glViewport(0, 0, int(screenWidth), int(screenHeight))
 glMatrixMode(GL_PROJECTION)
 glLoadIdentity()
@@ -72,19 +72,9 @@ keys = Keys.Keys()
 
 objects = ObjectList.ObjectList()
 
-objects.add_object(Player.Player(keys, draw, Quaternion.Vector(0, 5, 0),
-                                       "creepySphereThingy.obj",
-                                       Quaternion.Quaternion(.01, 0, 0, -1),
-                                       Quaternion.Quaternion(.01, 0, 1, 0),
-                                       "ship"))
-objects.add_object(Plane.Plane(keys, draw, Quaternion.Vector(0, 0, 0), "triangle.obj",
-                               Quaternion.Quaternion(.01, 0, 0, -1),
-                               Quaternion.Quaternion(.01, 0, 1, 0),
-                               "floor"))
-objects.add_object(Plane.Plane(keys, draw, Quaternion.Vector(0, 0, 0), "triangle_2.obj",
-                               Quaternion.Quaternion(.01, 0, 0, -1),
-                               Quaternion.Quaternion(.01, 0, 1, 0),
-                               "floor"))
+objects.add_object(Player.Player(keys, draw, Quaternion.Vector(0, 5, 0), "Spaceship.obj", Quaternion.Quaternion(.01, 0, 0, -1), Quaternion.Quaternion(.01, 0, 1, 0), "ship"))
+objects.add_object(Plane.Plane(keys, draw, Quaternion.Vector(0, 0, 0), "triangle.obj", Quaternion.Quaternion(.01, 0, 0, -1), Quaternion.Quaternion(.01, 0, 1, 0), "floor"))
+objects.add_object(Plane.Plane(keys, draw, Quaternion.Vector(0, 0, 0), "triangle_2.obj", Quaternion.Quaternion(.01, 0, 0, -1), Quaternion.Quaternion(.01, 0, 1, 0), "floor"))
 
 camera = Camera.Camera(screenWidth, screenHeight, viewDivisor, objects, msPF)
 

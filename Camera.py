@@ -9,8 +9,7 @@ import math
 import Quaternion
 
 class Camera:
-    def __init__(self, screenWidth, screenHeight, viewDivisor, objects,
-                 millisecondsPerFrame):
+    def __init__(self, screenWidth, screenHeight, viewDivisor, objects, millisecondsPerFrame):
         self.objects = objects
         self.ref = self.objects.list[0]
         self.Eyes = Quaternion.Vector(0, 100, 0)
@@ -31,17 +30,13 @@ class Camera:
         gluPerspective(50, self.screenWidth / self.screenHeight, 1, 500)
         glPopMatrix()
         glMatrixMode(GL_MODELVIEW)
-        gluLookAt(self.Eyes.x, self.Eyes.y, self.Eyes.z,
-                  self.Centers.x, self.Centers.y, self.Centers.z,
-                  self.Ups.x, self.Ups.y, self.Ups.z)
+        gluLookAt(self.Eyes.x, self.Eyes.y, self.Eyes.z, self.Centers.x, self.Centers.y, self.Centers.z, self.Ups.x, self.Ups.y, self.Ups.z)
         glScalef(1.0, 1.0, 1.0)
     def reshape(self, width, height):
         glViewport(0, 0, int(self.screenWidth), int(self.screenHeight))
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
-        glFrustum(width / -self.viewDivisor, width / self.viewDivisor + 1,
-                  height / -self.viewDivisor, height / self.viewDivisor + 1,
-                  4, 500)
+        glFrustum(width / -self.viewDivisor, width / self.viewDivisor + 1, height / -self.viewDivisor, height / self.viewDivisor + 1, 4, 500)
         glMatrixMode(GL_MODELVIEW)
     def display(self):
         glPushMatrix()
