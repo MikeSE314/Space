@@ -37,7 +37,7 @@ class OBJ:
         self.texcoords = []
         self.faces = []
         
-        material = None
+        self.material = None
         for line in open(filename, "r"):
             if line.startswith('#'): continue
             values = line.split()
@@ -55,7 +55,7 @@ class OBJ:
             elif values[0] == 'vt':
                 self.texcoords.append(map(float, values[1:3]))
             elif values[0] in ('usemtl', 'usemat'):
-                material = values[1]
+                self.material = values[1]
             elif values[0] == 'mtllib':
                 self.mtl = MTL(values[1])
             elif values[0] == 'f':
@@ -73,7 +73,7 @@ class OBJ:
                         norms.append(int(w[2]))
                     else:
                         norms.append(0)
-                self.faces.append((face, norms, texcoords, material))
+                self.faces.append((face, norms, texcoords, self.material))
         
         self.gl_list = glGenLists(1)
         glNewList(self.gl_list, GL_COMPILE)
@@ -82,13 +82,19 @@ class OBJ:
         for face in self.faces:
             vertices, normals, texture_coords, material = face
             
-            mtl = self.mtl[material]
+            mtl = self.mtl[self.material]
             if 'texture_Kd' in mtl:
                 # use diffuse texmap
                 glBindTexture(GL_TEXTURE_2D, mtl['texture_Kd'])
             else:
                 # just use diffuse colour
-                glColor(*mtl['Kd'])
+                #glColor(*mtl['Kd'])
+                print(self.mtl[self.material])
+                glMaterialfv(GL_FRONT, GL_AMBIENT, self.mtl[self.material]["Ka"])
+                glMaterialfv(GL_FRONT, GL_DIFFUSE, self.mtl[self.material]["Kd"])
+                glMaterialfv(GL_FRONT, GL_SPECULAR, self.mtl[self.material]["Ks"])
+                glMaterialfv(GL_FRONT, GL_EMISSION, self.mtl[self.material]["Ke"])
+                glMaterialfv(GL_FRONT, GL_SHININESS, self.mtl[self.material]["Ns"])
             
             glBegin(GL_POLYGON)
             for i in range(len(vertices)):

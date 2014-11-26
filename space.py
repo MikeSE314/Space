@@ -24,6 +24,8 @@ glMatrixMode(GL_MODELVIEW)
 glShadeModel(GL_FLAT)
 
 glEnable(GL_DEPTH_TEST)
+glEnable(GL_LIGHTING)
+glEnable(GL_LIGHT0)
 glEnable(GL_COLOR_MATERIAL)
 viewDivisor = 1000
 msPF = float(30)
@@ -50,6 +52,7 @@ while True:
             exit()
         elif keys.get_keys()[K_SPACE]:
             exit()
+    glLightfv(GL_LIGHT0, GL_POSITION, (1,1,0))
     clock.tick(30)
     camera.timer()
     pygame.display.set_caption("Space!")

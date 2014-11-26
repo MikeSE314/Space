@@ -1,7 +1,7 @@
 # Blender v2.72 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib creepySphereThingy.mtl
-o Icosphere
+mtllib colors.mtl
+o CreepySphere
 v 0.000000 -1.838573 0.000000
 v 0.723607 -0.447220 0.525725
 v -0.276388 -0.447220 0.850649
@@ -485,7 +485,7 @@ vn 0.551300 0.595500 -0.584300
 vn -0.640100 0.438000 -0.631200
 vn -0.609800 0.332400 -0.719500
 g Icosphere_Icosphere_None
-usemtl None
+usemtl red
 s off
 f 1//1 16//1 15//1
 f 2//2 18//2 24//2
