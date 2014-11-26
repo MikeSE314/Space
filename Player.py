@@ -4,7 +4,7 @@ from Quaternion import *
 
 import Object, objLoader
 
-class Player(Object.Obj):
+class Player(Object.SpaceObject):
     def update(self):
         super(Player, self).update()
         if not self.ztb and self.kp[K_z]:

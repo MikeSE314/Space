@@ -2,7 +2,7 @@ from OpenGL.GL import *
 
 import Draw, Object
 
-class RectPyramid(Object.Obj):
+class RectPyramid(Object.SpaceObject):
     def draw(self):
         glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, self.color)
         glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, self.color)

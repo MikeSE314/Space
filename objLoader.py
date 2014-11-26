@@ -16,7 +16,7 @@ def MTL(filename):
         elif values[0] == 'map_Kd':
             # load the texture referred to by this declaration
             mtl[values[0]] = values[1]
-            surf = pygame.image.load(os.path.join('/Users/micheal/Documents/Mike/programming/Python/github/Space/', mtl['map_Kd']))
+            surf = pygame.image.load(os.path.join(os.getcwd(), mtl['map_Kd']))
             image = pygame.image.tostring(surf, 'RGBA', 1)
             ix, iy = surf.get_rect().size
             texid = mtl['texture_Kd'] = glGenTextures(1)

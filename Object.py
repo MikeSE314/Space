@@ -3,7 +3,7 @@ import pygame, objLoader
 from pygame.locals import *
 from Quaternion import *
 
-class Obj(object):
+class SpaceObject(object):
     def __init__(self, keys, drawer, positions, file, rotQuat = Quaternion(0, 0, 0, 0), oRotQuat = Quaternion(0, 0, 0, 0), id = "none"):
         self.keys = keys
         self.kp = self.keys.get_keys()

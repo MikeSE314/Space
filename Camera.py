@@ -3,10 +3,7 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from pygame.locals import *
 
-import random
-import pygame
-import math
-import Quaternion
+import random, pygame, math, Quaternion
 
 class Camera:
     def __init__(self, screenWidth, screenHeight, viewDivisor, objects, millisecondsPerFrame):
